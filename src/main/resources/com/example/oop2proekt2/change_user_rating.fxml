@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="283.0" prefWidth="281.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop2proekt2.ChangeUserRatingController">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="283.0" prefWidth="281.0">
+         <children>
+            <Label text="Промяна на рейтинга на потребител">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="userBox" prefHeight="27.0" prefWidth="238.0" promptText="Избери потребител">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Label text="Нов рейтинг:">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="25.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="ratingSlider" disable="true" max="10.0" maxWidth="-Infinity" prefHeight="16.0" prefWidth="244.0" />
+            <Label fx:id="ratingLabel" text="0" />
+            <Button fx:id="setRatingBtn" alignment="BOTTOM_CENTER" disable="true" mnemonicParsing="false" onAction="#setRatingBtnClick" prefHeight="27.0" prefWidth="141.0" text="Запази" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane maxHeight="1.7976931348623157E308" prefHeight="315.0" prefWidth="294.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop2proekt2.ActionsUsersController">
+   <children>
+      <Pane maxHeight="1.7976931348623157E308" prefHeight="180.0" prefWidth="294.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="315.0" prefWidth="294.0">
+               <children>
+                  <Label alignment="TOP_CENTER" text="Операции с потребители">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Оператор" />
+                  <Button fx:id="changeRatingBtn" mnemonicParsing="false" onAction="#onChangeRatingBtn" prefHeight="27.0" prefWidth="215.0" text="Промяна на рейтинг">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button layoutX="66.0" layoutY="223.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="215.0" text="Търсене на потребител">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button layoutX="66.0" layoutY="242.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="215.0" text="Невърнати книги на потребител" />
+                  <Button layoutX="66.0" layoutY="232.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="215.0" text="Формуляри на потребител">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

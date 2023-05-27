@@ -58,12 +58,26 @@ public class DB {
         return null;
     }
 
+
+    //GETTERS
     public static ResultSet getAllBooks() throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT id as 'ID', book_name as 'Име на книгата', book_author as 'Автор', book_genre as 'Жанр', is_damaged as 'Повредена', is_archived as 'Архивирана' FROM books");
         ResultSet resultSet = statement.executeQuery();
         return resultSet;
     }
 
+    public static ResultSet getAllUsers() throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT id AS 'ID', username AS 'Потр. Име', rating AS 'Рейтинг', role AS 'Позиция', created_at AS 'Добавен на' FROM users");
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet;
+    }
+
+    public static ResultSet getUserByID(int id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT id AS 'ID', username AS 'Потр. Име', rating AS 'Рейтинг', role AS 'Позиция', created_at AS 'Добавен на' FROM users WHERE id = ?");
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet;
+    }
     public static ResultSet getLentBooks() throws SQLException { //всички заети, не само на юзъра
         PreparedStatement statement = connection.prepareStatement("SELECT lendings.id AS 'ID', lendings.book_id AS 'Номер на книгата', books.book_name AS 'Име на книгата', lendings.to_id AS 'Взета от', lendings.until AS 'Взета до', lendings.by_id AS 'Дадена от' FROM lendings INNER JOIN books ON books.id = lendings.book_id WHERE returned = 0");
         ResultSet resultSet = statement.executeQuery();
@@ -95,11 +109,28 @@ public class DB {
         return resultSet;
     }
 
-    public static ResultSet getUserAllLendings(int id) throws SQLException { //всички "формуляри"
+    public static ResultSet getUserAllLendings(int id) throws SQLException { //всички "формуляри" на потребителя
         PreparedStatement statement = connection.prepareStatement("SELECT lendings.id AS 'ID', books.book_name AS 'Име на книгата', users.username AS 'Оператор', lendings.returned AS 'Върната', lendings.until AS 'Срок за връщане', lendings.created_at AS 'Взета на' FROM lendings INNER JOIN books ON books.id = lendings.book_id INNER JOIN users ON users.id = lendings.to_id WHERE lendings.to_id = ?");
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
         return resultSet;
+    }
+
+    public static ResultSet getAllLendings() throws SQLException { //всички "формуляри"
+        PreparedStatement statement = connection.prepareStatement("SELECT lendings.id AS 'ID', books.book_name AS 'Име на книгата', users.username AS 'Оператор', lendings.returned AS 'Върната', lendings.until AS 'Срок за връщане', lendings.created_at AS 'Взета на' FROM lendings INNER JOIN books ON books.id = lendings.book_id INNER JOIN users ON users.id = lendings.to_id");
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet;
+    }
+
+
+
+    //SETTERS
+
+    public static void setUserRating(int id, int rating) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("UPDATE users SET rating = ? where id = ?");
+        statement.setInt(1, rating);
+        statement.setInt(2, id);
+        statement.executeUpdate();
     }
 
     public void closeConnection() {

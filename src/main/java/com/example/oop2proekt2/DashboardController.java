@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -40,6 +41,13 @@ public class DashboardController {
     }
 
     @FXML
+    public void onUserActionsBtn() throws IOException {
+        Stage stage = (Stage)operatorPane.getScene().getWindow();
+        SceneManager.modal(stage, DashboardController.class, "actions_users", "Операции с потребител");
+    }
+
+
+    @FXML
     public void onAllBooksBtnClick() {
         try {
             ResultSet all = DB.getAllBooks();
@@ -49,6 +57,29 @@ public class DashboardController {
             System.out.println(err);
         }
     }
+
+    @FXML
+    public void onAllUsersBtnClick() {
+        try {
+            ResultSet all = DB.getAllUsers();
+            Helper.parseResultSet(tableView, all);
+
+        } catch(Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    @FXML
+    public void onAllLendingsBtnClick() {
+        try {
+            ResultSet all = DB.getAllLendings();
+            Helper.parseResultSet(tableView, all);
+
+        } catch(Exception err) {
+            System.out.println(err);
+        }
+    }
+
 
     @FXML
     public void onAllLentBooksBtnClick() {
