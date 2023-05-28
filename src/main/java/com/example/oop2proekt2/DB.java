@@ -1,5 +1,7 @@
 package com.example.oop2proekt2;
 
+import javafx.scene.control.Alert;
+
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
@@ -29,7 +31,7 @@ public class DB {
         ResultSet res = statement.executeQuery();
 
         if (res.next()) {
-            User user = new User(res.getInt("id"), res.getString("username"), res.getInt("rating"), res.getString("role"), res.getString("created_at"));
+            User user = new User(res.getInt("id"), res.getString("username"), res.getInt("rating"), res.getString("role"), res.getString("created_at"), res.getInt("is_accepted"));
             return user;
         }
 
@@ -72,6 +74,21 @@ public class DB {
         return resultSet;
     }
 
+    public static ResultSet getUsersAwaitingAcception() throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT id AS 'ID', username AS 'Потр. Име', rating AS 'Рейтинг', role AS 'Позиция', created_at AS 'Добавен на' FROM users WHERE is_accepted = 0 AND role = 'user'");
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet;
+    }
+
+    // търсене (search)
+    public static ResultSet getUserByCriteria(Boolean isUsername, String criteria) throws SQLException {
+        String c = isUsername ? "username" : "id";
+        PreparedStatement statement = connection.prepareStatement("SELECT id AS 'ID', username AS 'Потр. Име', rating AS 'Рейтинг', role AS 'Позиция', created_at AS 'Добавен на' FROM users WHERE `" + c +"` LIKE ?");
+        statement.setString(1, criteria);
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet;
+    }
+
     public static ResultSet getUserByID(int id) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT id AS 'ID', username AS 'Потр. Име', rating AS 'Рейтинг', role AS 'Позиция', created_at AS 'Добавен на' FROM users WHERE id = ?");
         statement.setInt(1, id);
@@ -109,6 +126,7 @@ public class DB {
         return resultSet;
     }
 
+
     public static ResultSet getUserAllLendings(int id) throws SQLException { //всички "формуляри" на потребителя
         PreparedStatement statement = connection.prepareStatement("SELECT lendings.id AS 'ID', books.book_name AS 'Име на книгата', users.username AS 'Оператор', lendings.returned AS 'Върната', lendings.until AS 'Срок за връщане', lendings.created_at AS 'Взета на' FROM lendings INNER JOIN books ON books.id = lendings.book_id INNER JOIN users ON users.id = lendings.to_id WHERE lendings.to_id = ?");
         statement.setInt(1, id);
@@ -132,6 +150,75 @@ public class DB {
         statement.setInt(2, id);
         statement.executeUpdate();
     }
+
+    public static void createBook(String name, String author, String genre, Boolean isDamaged, Boolean isArchived) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO books (book_name, book_author, book_genre, is_damaged, is_archived) VALUES (?, ?, ?, ? , ?)");
+        statement.setString(1, name);
+        statement.setString(2, author);
+        statement.setString(3, genre);
+        statement.setInt(4, isDamaged ? 1 : 0);
+        statement.setInt(5, isArchived ? 1 : 0);
+        statement.executeUpdate();
+    }
+
+    public static void deleteBook(int id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("delete from books where id = ?");
+        statement.setInt(1, id);
+        statement.executeUpdate();
+    }
+
+    public static void editBook(int id, String field, String newVal) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update books set `" + field  + "` = ? where id = ?");
+        statement.setInt(2, id);
+        if(field == "is_damaged" || field == "is_archived")
+            statement.setInt(1, Integer.parseInt(newVal));
+        else
+            statement.setString(1, newVal);
+
+        statement.executeUpdate();
+    }
+
+    public static void damageBook(int id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update books set is_damaged = 1 where id = ?");
+        statement.setInt(1, id);
+        statement.executeUpdate();
+    }
+
+    public static void archiveBook(int id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update books set is_archived = 1 where id = ?");
+        statement.setInt(1, id);
+        statement.executeUpdate();
+    }
+
+    public static void acceptUser(int id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update users set is_accepted = 1 where id = ?");
+        statement.setInt(1, id);
+        statement.executeUpdate();
+    }
+
+    public static void lentBook(int bookId, int userId, Date until) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("insert into lendings (book_id, to_id, returned, until) values (?, ?, 0, ?)");
+        statement.setInt(1, bookId);
+        statement.setInt(2, userId);
+        statement.setDate(3, until);
+        statement.executeUpdate();
+    }
+
+    public static void returnBook(int bookId, int userId) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update lendings set returned = 1 where book_id = ? and to_id = ?");
+        statement.setInt(1, bookId);
+        statement.setInt(2, userId);
+        statement.executeUpdate();
+    }
+
+    public static void changeRole(int userId, String role) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update users set role = ? where id = ?");
+        statement.setString(1, role);
+        statement.setInt(2, userId);
+        statement.executeUpdate();
+    }
+
+
 
     public void closeConnection() {
         try {

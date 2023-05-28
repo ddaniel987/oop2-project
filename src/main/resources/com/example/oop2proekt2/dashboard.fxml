@@ -13,33 +13,34 @@
                      <children>
                         <Button id="btnFreeBooks" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#onFreeBooksBtnClick" prefHeight="27.0" prefWidth="126.0" text="Свободни книги" />
                         <Button layoutX="25.0" layoutY="48.0" mnemonicParsing="false" onAction="#onBtnSelfLent" prefHeight="27.0" prefWidth="126.0" text="Книги в мен" />
-                        <Button layoutX="25.0" layoutY="96.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" text="Заемане на книга" />
-                        <Button layoutX="25.0" layoutY="129.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" text="Връщане" />
+                        <Button layoutX="25.0" layoutY="96.0" mnemonicParsing="false" onAction="#onUserLendBook" prefHeight="27.0" prefWidth="126.0" text="Заемане на книга" />
+                        <Button layoutX="25.0" layoutY="129.0" mnemonicParsing="false" onAction="#onUserReturnBook" prefHeight="27.0" prefWidth="126.0" text="Връщане" />
                         <Button layoutX="25.0" layoutY="178.0" mnemonicParsing="false" onAction="#onBtnAllSelfLents" prefHeight="27.0" prefWidth="126.0" text="Формуляри" />
                      </children>
                   </Pane>
-                  <Pane fx:id="operatorPane" layoutX="1.0" prefHeight="315.0" prefWidth="175.0">
+                  <Pane fx:id="operatorPane" layoutX="1.0" prefHeight="315.0" prefWidth="175.0" visible="false">
                      <children>
                         <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#onAllBooksBtnClick" prefHeight="27.0" prefWidth="126.0" text="Всички книги" />
                         <Button layoutX="25.0" layoutY="48.0" mnemonicParsing="false" onAction="#onAllLentBooksBtnClick" prefHeight="27.0" prefWidth="126.0" text="Невърнати книги" />
                         <Button layoutX="25.0" layoutY="81.0" mnemonicParsing="false" onAction="#onDecommissionedBtnClick" prefHeight="27.0" prefWidth="126.0" text="Бракувани книги" />
                         <Button layoutX="25.0" layoutY="114.0" mnemonicParsing="false" onAction="#onArchivedBtnClick" prefHeight="27.0" prefWidth="126.0" text="Архив" />
-                        <Button layoutX="17.0" layoutY="274.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="141.0" text="Операции с книги" />
+                        <Button layoutX="17.0" layoutY="274.0" mnemonicParsing="false" onAction="#onBookActionsBtn" prefHeight="27.0" prefWidth="141.0" text="Операции с книги" />
                         <Button layoutX="25.0" layoutY="150.0" mnemonicParsing="false" onAction="#onAllUsersBtnClick" prefHeight="27.0" prefWidth="126.0" text="Потребители" />
                         <Button layoutX="18.0" layoutY="241.0" mnemonicParsing="false" onAction="#onUserActionsBtn" prefHeight="27.0" prefWidth="141.0" text="Операции с потребители" />
                         <Button layoutX="25.0" layoutY="187.0" mnemonicParsing="false" onAction="#onAllLendingsBtnClick" prefHeight="27.0" prefWidth="126.0" text="Формуляри" />
                      </children>
                   </Pane>
-                  <Pane fx:id="adminPane" layoutY="5.0" prefHeight="305.0" prefWidth="175.0" visible="false">
+                  <Pane fx:id="adminPane" layoutY="5.0" prefHeight="305.0" prefWidth="175.0">
                      <children>
-                        <Button layoutX="4.0" layoutY="264.0" mnemonicParsing="false" text="Операции с потребители" />
-                        <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" text="Всички книги" />
-                        <Button layoutX="25.0" layoutY="51.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" text="Всички потребители" />
-                        <Button layoutX="4.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="168.0" text="Операции с книги" />
+                        <Button layoutX="4.0" layoutY="264.0" mnemonicParsing="false" onAction="#onUserActionsBtn" text="Операции с потребители" />
+                        <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#onAllBooksBtnClick" prefHeight="27.0" prefWidth="126.0" text="Всички книги" />
+                        <Button layoutX="25.0" layoutY="51.0" mnemonicParsing="false" onAction="#onAllUsersBtnClick" prefHeight="27.0" prefWidth="126.0" text="Всички потребители" />
+                        <Button layoutX="4.0" layoutY="229.0" mnemonicParsing="false" onAction="#onBookActionsBtn" prefHeight="27.0" prefWidth="168.0" text="Операции с книги" />
+                        <Button layoutX="26.0" layoutY="87.0" mnemonicParsing="false" onAction="#onChangeRoleBtn" prefHeight="27.0" prefWidth="126.0" text="Промяна на роля" />
                      </children>
                   </Pane>
                   <Button layoutX="25.0" layoutY="357.0" mnemonicParsing="false" onAction="#onLogout" prefHeight="27.0" prefWidth="126.0" text="Изход" />
-                  <Button layoutX="25.0" layoutY="322.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" text="Моят профил" />
+                  <Button layoutX="25.0" layoutY="322.0" mnemonicParsing="false" onAction="#onUserProfileBtn" prefHeight="27.0" prefWidth="126.0" text="Моят профил" />
                </children></AnchorPane>
           <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="398.0">
                <children>

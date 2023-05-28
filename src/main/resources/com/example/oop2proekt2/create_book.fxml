@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="350.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop2proekt2.CreateBookController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="-1.0" prefHeight="354.0" prefWidth="421.0">
+         <children>
+            <Label text="Добавяне на нова книга">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="name" maxWidth="-Infinity" prefHeight="27.0" prefWidth="245.0" promptText="Име на книгата">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="author" layoutX="98.0" layoutY="66.0" maxWidth="-Infinity" prefHeight="27.0" prefWidth="245.0" promptText="Автор на книгата">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="genre" layoutX="98.0" layoutY="103.0" maxWidth="-Infinity" prefHeight="27.0" prefWidth="245.0" promptText="Жанр на книгата">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <ToggleButton fx:id="damaged" mnemonicParsing="false" prefHeight="27.0" prefWidth="99.0" text="Бракувана?">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="archived" mnemonicParsing="false" prefHeight="27.0" prefWidth="100.0" text="Архивирана?">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <Button mnemonicParsing="false" onAction="#onCreateBtn" prefHeight="27.0" prefWidth="250.0" text="Добави">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

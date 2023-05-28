@@ -1,6 +1,7 @@
 package com.example.oop2proekt2;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -26,11 +27,15 @@ public class AuthController {
             User res = DB.auth(username, password);
             if(res == null) throw new Exception();
 
+            if(res.getRole().equals("user") && res.getAcception() == 0) {
+                SceneManager.Alert(Alert.AlertType.ERROR, "Грешка", "Профилът ти изчаква одобрение.");
+                return;
+            }
+
             Session.setCurrentUser(res);
 
 
         } catch(Exception err) {
-            System.out.println(err);
             response.setText("Невалидно име или парола.");
         }
     }

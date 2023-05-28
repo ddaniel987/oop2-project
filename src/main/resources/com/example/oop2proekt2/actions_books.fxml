@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" prefHeight="406.0" prefWidth="295.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop2proekt2.ActionsBooksController">
+   <children>
+      <Pane maxHeight="1.7976931348623157E308" prefHeight="180.0" prefWidth="294.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="406.0" prefWidth="294.0">
+               <children>
+                  <Label alignment="TOP_CENTER" text="Операции с книги">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Оператор" />
+                  <Button fx:id="createBookBtn" mnemonicParsing="false" onAction="#onCreateBookBtn" prefHeight="27.0" prefWidth="215.0" text="Добавяне на книга">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button layoutX="66.0" layoutY="223.0" mnemonicParsing="false" onAction="#onDeleteBookBtn" prefHeight="27.0" prefWidth="215.0" text="Изтриване на книга">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button layoutX="66.0" layoutY="242.0" mnemonicParsing="false" onAction="#onUpdateBookBtn" prefHeight="27.0" prefWidth="215.0" text="Промяна на книга" />
+                  <Button layoutX="66.0" layoutY="232.0" mnemonicParsing="false" onAction="#onDamageBookBtn" prefHeight="27.0" prefWidth="215.0" text="Бракуване на книга">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button layoutX="50.0" layoutY="296.0" mnemonicParsing="false" onAction="#onArchiveBookBtn" prefHeight="27.0" prefWidth="215.0" text="Архивиране на книга">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

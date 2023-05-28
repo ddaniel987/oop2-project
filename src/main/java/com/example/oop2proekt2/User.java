@@ -9,13 +9,15 @@ public class User {
     private int rating;
     private String role;
     private String created_at;
+    private int is_accepted;
 
-    public User(int id, String username, int rating, String role, String created_at) {
+    public User(int id, String username, int rating, String role, String created_at, int is_accepted) {
         this.id = id;
         this.username = username;
         this.rating = rating;
         this.role = role;
         this.created_at = created_at;
+        this.is_accepted = is_accepted;
     }
 
     public int getId() {
@@ -25,6 +27,8 @@ public class User {
     public String getUsername() {
         return this.username;
     }
+
+    public int getAcception() {return this.is_accepted;}
 
     public int getRating() {
         return this.rating;

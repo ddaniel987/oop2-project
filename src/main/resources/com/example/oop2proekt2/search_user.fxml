@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.oop2proekt2.SearchUserController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="314.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop2proekt2.SearchUserController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="-2.0" prefHeight="314.0" prefWidth="623.0">
+         <children>
+            <Label text="Търсене на потребител">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="criteriaBox" prefHeight="27.0" prefWidth="176.0" promptText="Критерии">
+               <VBox.margin>
+                  <Insets top="35.0" />
+               </VBox.margin>
+            </ComboBox>
+            <TextField fx:id="searchBox" disable="true" maxWidth="-Infinity" onKeyTyped="#onSearch" prefHeight="27.0" prefWidth="236.0" promptText="Търсене...">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </TextField>
+            <TableView fx:id="tableView" prefHeight="134.0" prefWidth="309.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="79.0" text="C2" />
+              </columns>
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

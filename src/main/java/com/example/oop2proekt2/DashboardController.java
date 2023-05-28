@@ -40,10 +40,30 @@ public class DashboardController {
         Session.logout();
     }
 
+
+    @FXML
+    public void onChangeRoleBtn() throws IOException {
+        Stage stage = (Stage)operatorPane.getScene().getWindow();
+        SceneManager.modal(stage, DashboardController.class, "change_role", "Смени ролята на потребител");
+    }
+
+    @FXML
+    public void onUserLendBook() throws IOException {
+        Stage stage = (Stage)operatorPane.getScene().getWindow();
+        SceneManager.modal(stage, DashboardController.class, "lend_book", "Заеми книга");
+    }
+
+    @FXML
+    public void onUserReturnBook() throws IOException {
+        Stage stage = (Stage)operatorPane.getScene().getWindow();
+        SceneManager.modal(stage, DashboardController.class, "return_book", "Върни книга");
+    }
+
+
     @FXML
     public void onUserActionsBtn() throws IOException {
         Stage stage = (Stage)operatorPane.getScene().getWindow();
-        SceneManager.modal(stage, DashboardController.class, "actions_users", "Операции с потребител");
+        SceneManager.modal(stage, DashboardController.class, "actions_users", "Операции с потребители");
     }
 
 
@@ -146,5 +166,17 @@ public class DashboardController {
         } catch(Exception err) {
             System.out.println(err);
         }
+    }
+
+    @FXML
+    public void onBookActionsBtn() throws IOException {
+        Stage stage = (Stage)operatorPane.getScene().getWindow();
+        SceneManager.modal(stage, DashboardController.class, "actions_books", "Операции с книги");
+    }
+
+    @FXML
+    public void onUserProfileBtn() throws IOException {
+        Stage stage = (Stage)operatorPane.getScene().getWindow();
+        SceneManager.modal(stage, DashboardController.class, "profile", "Моят Профил");
     }
 }
